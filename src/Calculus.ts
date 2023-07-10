@@ -1,3 +1,10 @@
+export enum SERIES {
+  ser = "Crazy Serie",
+  pri = "Primos",
+  tri = "Triangular",
+  fib = "Fibonacci",
+}
+
 class Calculus {
   static triangular(n: number): number {
     if (n <= 0) return 0;
