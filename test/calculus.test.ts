@@ -1,57 +1,107 @@
 import { describe, it, assert } from "vitest";
 import Calculus from "../src/Calculus";
 
-/* Teoremas para verificacion */
+/* Pruebas de funcion */
 
-/// Triangular
-describe("Calculus.triangular()", () => {
-  it("La suma de n y (n-1) es un cuadrado perfecto.", () => {
-    // S
-    const input = 10;
-    const expected = input * input;
-    // E
-    const result = Calculus.triangular(input) + Calculus.triangular(input - 1);
-    // V
-    assert.strictEqual(result, expected);
-  });
+const SERIES_TEST = [
+  [0, 0],
+  [1, 0],
+  [2, Infinity],
+  [3, 39],
+  [4, 102],
+  [5, 95],
+  [6, 115],
+  [7, 121.8],
+  [8, 108.5],
+  [9, 102.461584615],
+];
 
-  it("La suma de dos numeros triangulares iguales da un numero oblongo", () => {
-    // S
-    const input = 10;
-    const expected = input * (input + 1);
-    // E
-    const result = 2 * Calculus.triangular(input);
-    // V
-    assert.strictEqual(result, expected);
-  });
-
-  it("La suma de los primeros numeros triangulares da un numero tetraedrico", () => {
-    // S
-    const input = 10;
-    const expected = (input * (input + 2) * (input + 1)) / 6;
-    // E
-    let result = 0;
-    for (let i = 0; i <= input; i++) {
-      result += Calculus.triangular(i);
-    }
-    // V
-    assert.strictEqual(result, expected);
+describe("Calculus.serie()", () => {
+  SERIES_TEST.forEach((testpair) => {
+    it(`S(${testpair[0]}) = ${testpair[1]}`, () => {
+      const input = testpair[0];
+      const expected = testpair[1];
+      const result = Calculus.serie(input);
+      if (Number.isFinite(expected)) {
+        assert.approximately(result, expected, 0.0001);
+      } else {
+        assert.strictEqual(result, expected);
+      }
+    });
   });
 });
 
-/// Fibonacci
+const TRIANG_TESTS = [
+  // [-4, -3],
+  // [-2, -1],
+  [0, 0],
+  [1, 1],
+  [2, 3],
+  [4, 10],
+  [8, 36],
+  [16, 136],
+  [32, 528],
+  [64, 2080],
+  [128, 8256],
+];
+
+describe("Calculus.triangular()", () => {
+  TRIANG_TESTS.forEach((testpair) => {
+    it(`T(${testpair[0]}) = ${testpair[1]}`, () => {
+      const input = testpair[0];
+      const expected = testpair[1];
+      const result = Calculus.triangular(input);
+      assert.strictEqual(result, expected);
+    });
+  });
+});
+
+const FIBO_TESTS = [
+  [-7, 13],
+  [-4, -3],
+  [-2, -1],
+  [0, 0],
+  [1, 1],
+  [2, 1],
+  [4, 3],
+  [7, 13],
+  [11, 89],
+  [14, 377],
+  [17, 1597],
+  [20, 6765],
+];
+
 describe("Calculus.fibonacci()", () => {
-  it("Deberia satisfacer la formula de Binet", () => {
-    // S
-    const input = 40;
-    const aurus = (1 + Math.sqrt(5)) / 2;
-    const expected = Math.floor(
-      //formula de binet
-      (aurus ** input - (1 / -aurus) ** input) / Math.sqrt(5)
-    );
-    // E
-    const result = Calculus.fibonacci(input);
-    // V
-    assert.strictEqual(result, expected);
+  FIBO_TESTS.forEach((testpair) => {
+    it(`F(${testpair[0]}) = ${testpair[1]}`, () => {
+      const input = testpair[0];
+      const expected = testpair[1];
+      const result = Calculus.fibonacci(input);
+      assert.strictEqual(result, expected);
+    });
+  });
+});
+
+const PRIME_TEST = [
+  [-10, 0],
+  [0, 0],
+  [1, 2],
+  [2, 3],
+  [4, 7],
+  [7, 17],
+  [11, 31],
+  [14, 43],
+  [17, 59],
+  [20, 71],
+];
+
+describe("Calculus.prime()", () => {
+  PRIME_TEST.forEach((testpair) => {
+    it(`P(${testpair[0]}) = ${testpair[1]}`, () => {
+      const input = testpair[0];
+      const expected = testpair[1];
+      const result = Calculus.prime(input);
+      assert.strictEqual(result, expected);
+    });
   });
 });
