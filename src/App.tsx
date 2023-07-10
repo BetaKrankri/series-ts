@@ -21,7 +21,7 @@ function App() {
       <div>
         by{" "}
         <span className="font-bold hover:underline hover:cursor-pointer">
-          BetaKrankri
+          <a href="https://github.com/BetaKrankri/series-ts">BetaKrankri</a>
         </span>
       </div>
     </div>
