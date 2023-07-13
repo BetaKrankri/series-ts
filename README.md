@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-El proyecto 'Series Calculator' es una solución de un ejercicio proporcionado en una entrevista de trabajo para un puesto en Sngular. Está desarrollado utilizando React, Vite, Tailwind CSS y Vitest.
+El proyecto 'Series Calculator' es una solución de un ejercicio proporcionado en una entrevista de trabajo para un puesto de froont end. Está desarrollado utilizando React, Vite, Tailwind CSS y Vitest.
 
 ### Objetivos
 
