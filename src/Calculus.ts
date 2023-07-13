@@ -41,7 +41,7 @@ class Calculus {
    * @returns El n-ésimo número primo calculado.
    */
   static prime(n: number): number {
-    if (n <= 0) return 0;
+    if (n <= 0 || typeof n !== "number") return 0;
     const primes: number[] = [];
     let i = 2;
     while (primes.length < n) {

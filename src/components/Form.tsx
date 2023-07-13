@@ -2,9 +2,10 @@ import { SERIES } from "../Calculus";
 type Props = {
   setTerm: React.Dispatch<React.SetStateAction<number>>;
   setSerie: React.Dispatch<React.SetStateAction<SERIES>>;
+  term: number;
 };
 
-export default function Form({ setTerm, setSerie }: Props) {
+export default function Form({ setTerm, setSerie, term }: Props) {
   return (
     <form
       className="Form flex flex-col gap-5 items-center w-full  border border-[#80b3b3] rounded-lg p-2"
@@ -15,14 +16,23 @@ export default function Form({ setTerm, setSerie }: Props) {
       <div className="flex gap-2 items-center w-full">
         <p className="text-xl text-[#EFF5F5]">n=</p>
         <input
+          value={term}
           placeholder="0"
           type="number"
           name="number"
           className="rounded-lg bg-[#B2661A] text-[#FCF2E9] text-xl w-full"
           min={0}
           max={1000}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+              return true;
+            } else {
+              e.preventDefault();
+              return false;
+            }
+          }}
           onChange={(e) => {
-            setTerm(parseInt(e.target.value));
+            setTerm(() => parseInt(e.target.value));
           }}
         />
       </div>

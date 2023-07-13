@@ -14,7 +14,7 @@ function App() {
       <div className="SeriesCalculator flex flex-col items-center gap-4 px-10 py-8 bg-[#132020] rounded-md">
         <p className="text-lg">Series Calculator</p>
         <Brain setResult={setResult} term={term} serie={serie} />
-        <Form setTerm={setTerm} setSerie={setSerie} />
+        <Form setTerm={setTerm} setSerie={setSerie} term={term} />
         <ResultDisplay result={result} serie={serie} />
       </div>
 
