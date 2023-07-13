@@ -23,16 +23,11 @@ export default function Form({ setTerm, setSerie, term }: Props) {
           className="rounded-lg bg-[#B2661A] text-[#FCF2E9] text-xl w-full"
           min={0}
           max={1000}
-          onKeyDown={(e) => {
-            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-              return true;
-            } else {
-              e.preventDefault();
-              return false;
-            }
-          }}
           onChange={(e) => {
-            setTerm(() => parseInt(e.target.value));
+            setTerm((t) => {
+              const val = parseInt(e.target.value);
+              return !val ? 0 : val > 1000 || val < 0 ? t : val;
+            });
           }}
         />
       </div>
