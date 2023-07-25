@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Calculus, { SERIES } from "../Calculus";
 
-type Props = {
-  term: number;
-  setResult: React.Dispatch<React.SetStateAction<number>>;
-  serie: SERIES;
-};
+export default function useSerie() {
+  const [result, setResult] = useState(0);
+  const [serie, setSerie] = useState(SERIES.ser);
+  const [term, setTerm] = useState(0);
 
-function Brain({ term, setResult, serie }: Props) {
   useEffect(() => {
     setResult(() => {
       switch (serie) {
@@ -25,9 +23,7 @@ function Brain({ term, setResult, serie }: Props) {
           break;
       }
     });
-  }, [term, setResult, serie]);
+  }, [term, serie]);
 
-  return <></>;
+  return { result, serie, setSerie, term, setTerm };
 }
-
-export default Brain;
